@@ -1,16 +1,23 @@
 package com.example.car.domain;
 
-import com.example.car.controller.CarDto;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
-import java.time.LocalDate;
-
+@Entity
 public class Car {
+
+    @Id
+    @GeneratedValue
     private Long id;
 
     private String brand;
     private String licensePlate;
     private STATUS status;
 
+    public Car() {
+        // empty
+    }
     public void setBrand(String brand) {
         this.brand = brand;
     }
