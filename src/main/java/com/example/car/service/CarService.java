@@ -9,6 +9,7 @@ import com.example.car.repository.CarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 
@@ -28,6 +29,8 @@ public class CarService {
         car.setBrand(createCarRequest.brand());
         car.setLicensePlate(createCarRequest.licensePlate());
         car.setStatus(STATUS.valueOf(createCarRequest.status()));
+        car.setCreatedAt(LocalDateTime.now());
+        car.setLastUpdatedAt(LocalDateTime.now());
 
         carRepository.save(car);
     }
