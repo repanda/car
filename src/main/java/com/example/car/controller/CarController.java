@@ -11,6 +11,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class CarController {
 
     private CarService carService;
+
+    public CarController(CarService carService) {
+        this.carService = carService;
+    }
+
     @PostMapping("")
     public void create(@RequestBody CarDto carDto) {
 

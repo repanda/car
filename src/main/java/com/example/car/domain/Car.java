@@ -10,4 +10,16 @@ public class Car {
     private String brand;
     private String licensePlate;
     private STATUS status;
+
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
+
+    public void setLicensePlate(String licensePlate) {
+        this.licensePlate = licensePlate;
+    }
+
+    public void setStatus(STATUS status) {
+        this.status = status;
+    }
 }

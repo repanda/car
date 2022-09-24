@@ -1,6 +1,6 @@
 package com.example.car.domain;
 
-enum STATUS {
+public enum STATUS {
     AVAILABLE("available");
 
     private String label;
