@@ -8,4 +8,8 @@ public enum STATUS {
     STATUS(String label) {
         this.label = label;
     }
+
+    public String getLabel() {
+        return label;
+    }
 }

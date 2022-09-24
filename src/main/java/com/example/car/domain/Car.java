@@ -27,12 +27,24 @@ public class Car {
         this.id = id;
     }
 
+    public String getBrand() {
+        return brand;
+    }
+
     public void setBrand(String brand) {
         this.brand = brand;
     }
 
+    public String getLicensePlate() {
+        return licensePlate;
+    }
+
     public void setLicensePlate(String licensePlate) {
         this.licensePlate = licensePlate;
+    }
+
+    public STATUS getStatus() {
+        return status;
     }
 
     public void setStatus(STATUS status) {

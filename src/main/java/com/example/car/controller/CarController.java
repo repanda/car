@@ -21,14 +21,7 @@ public class CarController {
 
     @GetMapping("{id}")
     public CarResponse findById(@PathVariable long id) {
-        CarResponse savedCar = new CarResponse(
-                12345L,
-                "Flexa",
-                "L-CS8877E",
-                "available",
-                "2017-09-01T10:23:47.000Z",
-                "2022-04-15T13:23:11.000Z"
-        );
-        return savedCar;
+
+        return carService.findById(id);
     }
 }
