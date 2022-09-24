@@ -1,6 +1,6 @@
 package com.example.car.service;
 
-import com.example.car.controller.CarDto;
+import com.example.car.controller.CreateCarRequest;
 import com.example.car.domain.Car;
 import com.example.car.domain.STATUS;
 import com.example.car.repository.CarRepository;
@@ -16,11 +16,11 @@ public class CarService {
         this.carRepository = carRepository;
     }
 
-    public void create(CarDto carDto) {
+    public void create(CreateCarRequest createCarRequest) {
         Car car = new Car();
-        car.setBrand(carDto.brand());
-        car.setLicensePlate(carDto.licensePlate());
-        car.setStatus(STATUS.valueOf(carDto.status()));
+        car.setBrand(createCarRequest.brand());
+        car.setLicensePlate(createCarRequest.licensePlate());
+        car.setStatus(STATUS.valueOf(createCarRequest.status()));
 
         carRepository.save(car);
     }

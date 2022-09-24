@@ -14,7 +14,7 @@ public class CarController {
     }
 
     @PostMapping("")
-    public void create(@RequestBody CarDto carDto) {
+    public void create(@RequestBody CreateCarRequest carDto) {
 
         carService.create(carDto);
     }
