@@ -17,6 +17,8 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.test.web.servlet.setup.StandaloneMockMvcBuilder;
 import org.springframework.web.context.WebApplicationContext;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 
 import static org.mockito.ArgumentMatchers.any;
@@ -48,6 +50,12 @@ public class BaseTestClass {
         savedCar.setBrand("Flexa");
         savedCar.setLicensePlate("L-CS8877E");
         savedCar.setStatus(STATUS.AVAILABLE);
+        savedCar.setCreatedAt(
+                LocalDateTime.parse("2017-09-01T10:23:47.000Z", DateTimeFormatter.ISO_ZONED_DATE_TIME)
+        );
+        savedCar.setLastUpdatedAt(
+                LocalDateTime.parse("2022-04-15T13:23:11.000Z", DateTimeFormatter.ISO_ZONED_DATE_TIME)
+        );
 
         when(carRepository.findById(any(Long.class))).thenReturn(Optional.of(savedCar));
         RestAssuredMockMvc.webAppContextSetup(webApplicationContext);

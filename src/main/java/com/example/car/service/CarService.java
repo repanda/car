@@ -9,10 +9,13 @@ import com.example.car.repository.CarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.format.DateTimeFormatter;
+
 
 @Service
 public class CarService {
 
+    public static final DateTimeFormatter ZONED_DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
     private final CarRepository carRepository;
 
     @Autowired
@@ -33,13 +36,16 @@ public class CarService {
         Car car = carRepository.findById(id)
                 .orElseThrow(CarNotFoundException::new);
 
+        String createdAt = car.getCreatedAt().format(ZONED_DATE_TIME_FORMATTER);
+        String lastUpdatedAt = car.getLastUpdatedAt().format(ZONED_DATE_TIME_FORMATTER);
+
         CarResponse savedCar = new CarResponse(
                 car.getId(),
                 car.getBrand(),
                 car.getLicensePlate(),
                 car.getStatus().getLabel(),
-                "2017-09-01T10:23:47.000Z",
-                "2022-04-15T13:23:11.000Z"
+                createdAt,
+                lastUpdatedAt
         );
 
         return savedCar;

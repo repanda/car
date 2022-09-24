@@ -3,6 +3,7 @@ package com.example.car.domain;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import java.time.LocalDateTime;
 
 @Entity
 public class Car {
@@ -14,6 +15,10 @@ public class Car {
     private String brand;
     private String licensePlate;
     private STATUS status;
+
+    private LocalDateTime createdAt;
+
+    private LocalDateTime lastUpdatedAt;
 
     public Car() {
         // empty
@@ -49,5 +54,21 @@ public class Car {
 
     public void setStatus(STATUS status) {
         this.status = status;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public LocalDateTime getLastUpdatedAt() {
+        return lastUpdatedAt;
+    }
+
+    public void setLastUpdatedAt(LocalDateTime lastUpdatedAt) {
+        this.lastUpdatedAt = lastUpdatedAt;
     }
 }
