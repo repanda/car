@@ -3,6 +3,8 @@ package com.example.car.controller;
 import com.example.car.service.CarService;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collection;
+
 @RestController
 @RequestMapping("cars")
 public class CarController {
@@ -23,5 +25,11 @@ public class CarController {
     public CarResponse findById(@PathVariable long id) {
 
         return carService.findById(id);
+    }
+
+    @GetMapping
+    public Collection<CarResponse> all() {
+
+        return carService.findAll();
     }
 }

@@ -11,6 +11,8 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Collection;
+import java.util.stream.Collectors;
 
 
 @Service
@@ -37,8 +39,20 @@ public class CarService {
 
     public CarResponse findById(long id) {
         Car car = carRepository.findById(id)
-                .orElseThrow(CarNotFoundException::new);
+                .orElseThrow(() -> {
+                    CarNotFoundException carNotFoundException = new CarNotFoundException();
+                    return carNotFoundException;
+                });
 
+        return mapToCarResponse(car);
+    }
+    public Collection<CarResponse> findAll() {
+        return carRepository.findAll()
+                .stream().map(CarService::mapToCarResponse)
+                .collect(Collectors.toList());
+    }
+
+    private static CarResponse mapToCarResponse(Car car) {
         String createdAt = car.getCreatedAt().format(ZONED_DATE_TIME_FORMATTER);
         String lastUpdatedAt = car.getLastUpdatedAt().format(ZONED_DATE_TIME_FORMATTER);
 
@@ -50,7 +64,6 @@ public class CarService {
                 createdAt,
                 lastUpdatedAt
         );
-
         return savedCar;
     }
 }
